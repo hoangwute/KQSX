@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4db0d7</color>
+    <color name="colorPrimaryDark">#4db0d7</color>
+    <color name="colorAccent">#4db0d7</color>
+    <color name="colorBlack_10">#1A000000</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorTeal">#009688</color>
+    <color name="colorBlue">#2f74c1</color>
+    <color name="coloGrey">#e3e4e5</color>
+    <color name="colorGrey2">#8d8d8e</color>
+    <color name="colorBlueFB">#25469b</color>
+    <color name="colorYellow">#e4c101</color>
+    <color name="colorYellow60">#ffff8c</color>
+    <color name="colorBlack80">#CC000000</color>
+    <color name="colorGrey3">#c1c2c3</color>
+    <color name="colorRed">#f44336</color>
+    <color name="colorRed400">#EF5350</color>
+    <color name="colorRedGG">#df4930</color>
+    <color name="colorRed99">#99f44336</color>
+    <color name="colorBrown">#795548</color>
+    <color name="colorWhite99">#99ffffff</color>
+    <color name="colorGrey800">#424242</color>
+    <color name="black_effective">#2a2a2a</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorGreenApp">#82ba01</color>
+    <color name="bg_search">#ededed</color>
+    <color name="bg_item_table">#dedcdd</color>
+    <color name="colorGreenAppDark">#659100</color>
+    <color name="green">#81ba00</color>
+    <color name="green_transparent">#CC81ba00</color>
+    <color name="gray">#94a2af</color>
+    <color name="white">#FFFFFF</color>
+    <color name="text_black">#312f30</color>
+    <color name="text_primary">#312f30</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorGreenAppLight">#c1dc7f</color>
+    <color name="grayText">#5e5e5e</color>
+    <color name="gray_ic_navigation">#5e5e5e</color>
+    <color name="blue">#447ebe</color>
+    <color name="blue_delete">#4075dd</color>
+    <color name="orange_submit">#f47320</color>
+    <color name="btn_disable_gray">#e6e3de</color>
+    <color name="grayBackground">#e4eaf6</color>
+    <color name="text_blue">#224c9e</color>
+    <color name="black">#000000</color>
+    <color name="blue_light">#72b5cc</color>
+    <color name="blue_dark">#003470</color>
+    <color name="red">#d9350f</color>
+    <color name="gray_light">#e8e5e2</color>
+    <color name="yellow">#f4d57f</color>
+
+
+    <color name="transparentColorPrimary">#964db0d7</color>
+    <color name="black_light">#252323</color>
+    <color name="grayLine">#d7d7d7</color>
+    <color name="blue_light_light">#d4e9f0</color>
+    <color name="text_light">#818181</color>
+    <color name="dark_gray">#a3a3a3</color>
+    <color name="pink">#F26190</color>
+
+    <!--Btn color-->
+    <color name="gray_btn_press">#aaaaaa</color>
+
+    <!--Gender-->
+    <color name="male">#8ebcf0</color>
+    <color name="female">#f06eaa</color>
+
+    <!--Color Background for retire-->
+    <color name="retire_screen">#f2f2f2</color>
+    <color name="super_pink_light">#fff7e5</color>
+
+    <!--color engery chart-->
+
+    <color name="orange">#e64a0e</color>
+    <color name="orange_light">#ec5707</color>
+
+    <!--text_color-->
+    <color name="text_color_edt">#cac6c6</color>
+
+    <!-- graph color -->
+    <color name="bg_screen">#e3ebf6</color>
+</resources>

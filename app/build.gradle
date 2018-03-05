@@ -1,0 +1,59 @@
+
+apply plugin: 'com.android.application'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.wuochoang.basecode"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL_DEV", BASE_URL_DEV
+        buildConfigField "String ", "BASE_URL_STA", BASE_URL_STA
+        buildConfigField "String ", "BASE_URL_PRoDUCT", BASE_URL_PRODUCT
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+ext.VERSION_BUTTER_KNIFE = "8.7.0"
+ext.VERSION_DAGGER = "2.9"
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:design:26.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(':common-utils')
+    //butter knife
+    compile "com.jakewharton:butterknife:$VERSION_BUTTER_KNIFE"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$VERSION_BUTTER_KNIFE"
+    //Dagger 2
+    compile "com.google.dagger:dagger:$VERSION_DAGGER"
+    annotationProcessor "com.google.dagger:dagger-compiler:$VERSION_DAGGER"
+    provided 'javax.annotation:jsr250-api:1.0'
+
+}

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BaseCode</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_menu_department">Department</string>
+    <string name="title_menu_project">Project</string>
+    <string name="title_menu_timesheet">Time sheet</string>
+    <string name="title_menu_device">Device</string>
+    <string name="title_menu_profile">Profile</string>
+
+
+    <string name="font_default">fontDefault.tff</string>
+    <string name="email_empty">The email must be a valid email address.</string>
+    <string name="facebook_app_id">1476263952424736</string>
+    <string name="fb_login_protocol_scheme">fb1476263952424736</string>
+    <string name="password_error_validate">Passwords must be at least 5 characters in length</string>
+    <string name="password_confirm_and_password_not_match">The password confirmation and password must match.</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">back</string>
+
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+</resources>
