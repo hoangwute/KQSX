@@ -4,12 +4,13 @@ import android.os.Bundle;
 
 import com.wuochoang.kqsx.base.BaseActivity;
 import com.wuochoang.kqsx.base.BaseFragment;
+import com.wuochoang.kqsx.ui.home.view.MainFragment;
 
 public class MainActivity extends BaseActivity {
 
     @Override
     public BaseFragment initFragment() {
-        return null;
+        return new MainFragment();
     }
 
     @Override

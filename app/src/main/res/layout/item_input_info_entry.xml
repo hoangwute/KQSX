@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/inputInfoEntryLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtEntryId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1: "
+            android:layout_marginRight="10dp"/>
+
+        <EditText
+            android:id="@+id/txtEntryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:focusable="false"
+            android:hint="Chọn ngày"/>
+
+        <EditText
+            android:id="@+id/txtEntryCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            android:inputType="textCapCharacters"
+            android:gravity="center"
+            android:maxLength="4"
+            android:hint="Chọn vị trí"/>
+
+        <TextView
+            android:id="@+id/txtEntryNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp" />
+
+        <ImageView
+            android:id="@+id/imgArrow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_right_arrow"/>
+
+        <TextView
+            android:id="@+id/txtEntryDigit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/red" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/imgDeleteEntry"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_delete_alternative"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

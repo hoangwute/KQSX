@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorBlue</item>
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/orange_submit</item>
+        <item name="colorPrimaryDark">@color/orange_submit</item>
+        <item name="colorAccent">@color/orange_submit</item>
         <!--<item name="android:fontFamily">@font/roboto</item>-->
         <!--<item name="fontFamily">@font/roboto</item>-->
         <!-- enable window content transitions -->

@@ -2,6 +2,7 @@ package com.wuochoang.kqsx.di.module;
 
 import android.app.Application;
 
+import com.wuochoang.kqsx.common.Constant;
 import com.wuochoang.kqsx.network.ApiService;
 import com.wuochoang.kqsx.network.MyServiceInterceptor;
 import com.wuochoang.kqsx.network.UserAgentInterceptor;
@@ -137,7 +138,7 @@ public class NetworkModule {
     @Provides
     public Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL_DEV)
+                .baseUrl(Constant.SERVER_URL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
