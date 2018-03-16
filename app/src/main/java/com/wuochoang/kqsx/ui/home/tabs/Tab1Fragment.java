@@ -2,6 +2,7 @@ package com.wuochoang.kqsx.ui.home.tabs;
 
 import com.wuochoang.kqsx.base.BaseFragment;
 import com.wuochoang.kqsx.ui.devices.DevicesFragment;
+import com.wuochoang.kqsx.ui.result.view.ResultFragment;
 
 /**
  * Created by quyenlx on 8/9/2017.
@@ -10,7 +11,7 @@ import com.wuochoang.kqsx.ui.devices.DevicesFragment;
 public class Tab1Fragment extends BaseTabFragment {
     @Override
     public BaseFragment initFragment() {
-        return new DevicesFragment();
+        return new ResultFragment();
     }
 
 //

@@ -2,6 +2,7 @@ package com.wuochoang.kqsx.ui.home.tabs;
 
 import com.wuochoang.kqsx.base.BaseFragment;
 import com.wuochoang.kqsx.ui.devices.DevicesFragment;
+import com.wuochoang.kqsx.ui.history.view.HistoryFragment;
 
 /**
  * Created by quyenlx on 8/9/2017.
@@ -10,15 +11,7 @@ import com.wuochoang.kqsx.ui.devices.DevicesFragment;
 public class Tab2Fragment extends BaseTabFragment {
     @Override
     public BaseFragment initFragment() {
-        return new DevicesFragment();
+        return new HistoryFragment();
     }
 
-//
-//    @Override
-//    public void onBackStackChanged() {
-//        Timber.i("Size Tab2 : " + frm.getBackStackEntryCount());
-//        Fragment fragment = frm.findFragmentById(R.id.tab_container);
-//        if (fragment != null)
-//            Timber.i("Fragment Tab2 : " + fragment.getClass().getSimpleName());
-//    }
 }

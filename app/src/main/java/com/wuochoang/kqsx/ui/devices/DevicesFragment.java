@@ -5,6 +5,7 @@ import com.wuochoang.kqsx.base.BasePresenter;
 
 import butterknife.OnClick;
 import com.wuochoang.kqsx.R;
+import com.wuochoang.kqsx.ui.result.view.ResultFragment;
 
 /**
  * Created by quyenlx on 8/9/2017.
@@ -42,6 +43,6 @@ public class DevicesFragment extends BaseFragment {
 
     @OnClick(R.id.add)
     public void onClicked() {
-//        addFragment(new ProfileFragment());
+        addFragment(new ResultFragment());
     }
 }

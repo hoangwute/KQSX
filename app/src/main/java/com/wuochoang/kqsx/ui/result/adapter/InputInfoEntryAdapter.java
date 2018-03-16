@@ -1,4 +1,4 @@
-package com.wuochoang.kqsx.ui.home.adapter;
+package com.wuochoang.kqsx.ui.result.adapter;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;

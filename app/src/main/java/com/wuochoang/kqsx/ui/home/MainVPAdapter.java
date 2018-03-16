@@ -1,5 +1,6 @@
 package com.wuochoang.kqsx.ui.home;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -17,12 +18,12 @@ import com.wuochoang.kqsx.ui.home.tabs.Tab5Fragment;
 public class MainVPAdapter extends FragmentStatePagerAdapter {
     private Tab1Fragment tab1Fragment;
     private Tab2Fragment tab2Fragment;
-    private Tab3Fragment tab3Fragment;
-    private Tab4Fragment tab4Fragment;
-    private Tab5Fragment tab5Fragment;
 
-    public MainVPAdapter(FragmentManager fm) {
+    private Context mContext;
+
+    public MainVPAdapter(FragmentManager fm, Context context) {
         super(fm);
+        mContext = context;
     }
 
     @Override
@@ -38,21 +39,6 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
                     tab2Fragment = new Tab2Fragment();
                 }
                 return tab2Fragment;
-            case 2:
-                if (tab3Fragment == null) {
-                    tab3Fragment = new Tab3Fragment();
-                }
-                return tab3Fragment;
-            case 3:
-                if (tab4Fragment == null) {
-                    tab4Fragment = new Tab4Fragment();
-                }
-                return tab4Fragment;
-            case 4:
-                if (tab5Fragment == null) {
-                    tab5Fragment = new Tab5Fragment();
-                }
-                return tab5Fragment;
             default:
                 return null;
         }
@@ -60,6 +46,20 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 2;
+    }
+
+    // This determines the title for each tab
+    @Override
+    public CharSequence getPageTitle(int position) {
+        // Generate title based on item position
+        switch (position) {
+            case 0:
+                return "Kết Quả";
+            case 1:
+                return "Lịch Sử";
+            default:
+                return null;
+        }
     }
 }

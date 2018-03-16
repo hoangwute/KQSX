@@ -8,15 +8,31 @@ import com.wuochoang.kqsx.ui.home.view.MainFragment;
 
 public class MainActivity extends BaseActivity {
 
+    public MainFragment mainFragment;
+
+
     @Override
     public BaseFragment initFragment() {
-        return new MainFragment();
+        if (mainFragment == null)
+            mainFragment = new MainFragment();
+        return mainFragment;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void changeFitWindown() {
+        if (mainFragment != null)
+            mainFragment.changeFitWindow(-1);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mainFragment != null && !mainFragment.onBackPress())
+            super.onBackPressed();
     }
 
     @Override

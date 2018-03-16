@@ -1,4 +1,4 @@
-package com.wuochoang.kqsx.ui.home.presenter;
+package com.wuochoang.kqsx.ui.result.presenter;
 
 import android.util.Log;
 
@@ -8,7 +8,7 @@ import com.wuochoang.kqsx.common.Constant;
 import com.wuochoang.kqsx.model.ApiResult;
 import com.wuochoang.kqsx.model.InputInfoEntry;
 import com.wuochoang.kqsx.network.ApiService;
-import com.wuochoang.kqsx.ui.home.view.ResultView;
+import com.wuochoang.kqsx.ui.result.view.ResultsView;
 import com.wuochoang.kqsx.utility.DateUtils;
 import com.wuochoang.kqsx.utility.NumberUtils;
 
@@ -28,7 +28,7 @@ import static com.wuochoang.kqsx.utility.NumberUtils.convertCodeToNumber;
  * Created by admin on 06-Mar-18.
  */
 
-public class ResultPresenter extends BasePresenter<ResultView> {
+public class ResultPresenter extends BasePresenter<ResultsView> {
 
     public ResultPresenter(ApiService apiService) {
         super(apiService);

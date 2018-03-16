@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.wuochoang.kqsx.App;
+import com.wuochoang.kqsx.MainActivity;
 import com.wuochoang.kqsx.common.utils.Utils;
 import com.wuochoang.kqsx.di.component.ActivityComponent;
 import com.wuochoang.kqsx.di.module.ActivityModule;
@@ -91,13 +93,14 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     // Chỉ sử dụng trong main fragment
     @Override
     public void addFragment(BaseFragment fragment) {
-//        if (mActivity instanceof MainActivity) {
-//            FragmentManager frm = ((MainActivity) mActivity).mainFragment.getCurrentFragmentMgr();
-//            frm.beginTransaction()
-//                    .add(R.id.tab_container, fragment)
-//                    .addToBackStack(fragment.getClass().getSimpleName())
-//                    .commit();
-//        }
+        if (mActivity instanceof MainActivity) {
+            FragmentManager frm = ((MainActivity) mActivity).mainFragment.getCurrentFragmentMgr();
+            frm.beginTransaction()
+                    .add(R.id.tab_container, fragment)
+                    .addToBackStack(fragment.getClass().getSimpleName())
+                    .commit();
+            ((MainActivity) mActivity).changeFitWindown();    //adding fragment to backstack purpose
+        }
     }
 
     @Override
@@ -118,6 +121,10 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         if (mActivity != null) {
             KeyboardUtils.hideSoftInput(mActivity);
         }
+    }
+
+    public boolean isShowFitWindows() {
+        return true;
     }
 
     @Override
