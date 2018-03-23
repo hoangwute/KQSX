@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import com.wuochoang.kqsx.base.BaseFragment;
 import com.wuochoang.kqsx.base.BasePresenter;
 import com.wuochoang.kqsx.common.Constant;
 import com.wuochoang.kqsx.manager.database.RealmHelper;
+import com.wuochoang.kqsx.model.History;
 import com.wuochoang.kqsx.model.InputInfoEntry;
 import com.wuochoang.kqsx.model.LotteryResult;
 import com.wuochoang.kqsx.network.ApiService;
@@ -38,6 +40,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.realm.RealmList;
+
+import static com.wuochoang.kqsx.manager.database.RealmHelper.exportDatabase;
 
 /**
  * Created by admin on 05-Mar-18.
@@ -74,6 +79,8 @@ public class ResultFragment extends BaseFragment implements ResultsView {
     TextView txtResultsInPercentage;
     @BindView(R.id.txtMaxRunnableTime)
     TextView txtMaxRunnableTime;
+    @BindView(R.id.btnSaveResult)
+    Button btnSaveResult;
 
     @BindView(R.id.rvInfoEntry)
     RecyclerView rvInfoEntry;
@@ -81,6 +88,8 @@ public class ResultFragment extends BaseFragment implements ResultsView {
     private ResultPresenter presenter;
     private InputInfoEntryAdapter inputInfoEntryAdapter;
     private List<InputInfoEntry> entryList = new ArrayList<>();
+    private List<InputInfoEntry> savedEntryList = new ArrayList<>();
+    private int result;
 
     private Calendar myCalendar = Calendar.getInstance();
     private DatePickerDialog.OnDateSetListener date = (DatePicker view, int year, int monthOfYear, int dayOfMonth) -> {
@@ -88,6 +97,16 @@ public class ResultFragment extends BaseFragment implements ResultsView {
         myCalendar.set(Calendar.MONTH, monthOfYear);
         myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
     };
+
+    public interface OnSaveResult {
+        void onSave();
+    }
+
+    public static OnSaveResult onSaveResultListener;
+
+    public void setOnSaveResultListener(OnSaveResult onSaveResultListener) {
+        this.onSaveResultListener = onSaveResultListener;
+    }
 
     private void updateFieldLabel(EditText editText, String dateFormat) {
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
@@ -110,10 +129,16 @@ public class ResultFragment extends BaseFragment implements ResultsView {
         return presenter;
     }
 
+    public static ResultFragment getInstance() {
+        ResultFragment fragment = new ResultFragment();
+        return fragment;
+    }
+
     @OnClick(R.id.btnTest)
     public void test() {
         txtResultsInPercentage.setText("");
         txtResults.setText("");
+        btnSaveResult.setVisibility(View.GONE);
         if(txtComparedDate.getText().toString().isEmpty()) {
             ToastUtils.show("Vui lòng nhập ngày so sánh");
             return;
@@ -134,9 +159,9 @@ public class ResultFragment extends BaseFragment implements ResultsView {
             ToastUtils.show("Số lần chạy phải lớn hơn 0");
             return;
         }
-        List<LotteryResult> lotteryResultList = RealmHelper.findAll(LotteryResult.class);
+        List<LotteryResult> lotteryResultList = RealmHelper.findAll(LotteryResult.class,"date");
         String endRunningDateStringCompare = DateUtils.getNextDate(txtComparedDate.getText().toString(), Integer.parseInt(txtRunTimes.getText().toString()));
-        String lastSavedDateString = DateUtils.formatReceivedDateToSentDate(RealmHelper.findFirst(LotteryResult.class).getDate());
+        String lastSavedDateString = DateUtils.formatReceivedDateToSentDate(lotteryResultList.get(0).getDate());
         String firstSavedDateString = DateUtils.formatReceivedDateToSentDate(lotteryResultList.get(lotteryResultList.size()-1).getDate());
         if(DateUtils.isExceedThreshold(lastSavedDateString, endRunningDateStringCompare)) {
             txtResults.setText("Số lần chạy vượt quá ngày lấy dữ liệu. Vui lòng giảm số lần chạy hoặc chọn ngày so sánh thấp hơn ngày " + txtComparedDate.getText().toString());
@@ -156,7 +181,7 @@ public class ResultFragment extends BaseFragment implements ResultsView {
         for(InputInfoEntry entry : entryListFiltered) {
             Log.d("DateEntry", entry.getDate());
             String endRunningDateString = DateUtils.getNextDate(entry.getDate(), Integer.parseInt(txtRunTimes.getText().toString()));
-            if(entry.getCode() == null) {
+            if(entry.getCode() == null || entry.getCode().isEmpty()) {
                 txtResults.setText("Vui lòng nhập vị trí cho ngày " + entry.getDate());
                 return;
             }
@@ -169,6 +194,7 @@ public class ResultFragment extends BaseFragment implements ResultsView {
                 return;
             }
         }
+        savedEntryList = entryListFiltered;
         presenter.getCalculationResult(entryListFiltered, Integer.parseInt(txtRunTimes.getText().toString()),
                 txtComparedDate.getText().toString(), txtComparedCode.getText().toString());
 
@@ -223,6 +249,22 @@ public class ResultFragment extends BaseFragment implements ResultsView {
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    @OnClick(R.id.btnSaveResult)
+    public void saveResult() {
+        RealmList<InputInfoEntry> savedRealmList = new RealmList<>();
+        for(int i = 0; i < savedEntryList.size(); i++) {
+            Log.d("Saved", savedEntryList.get(i).getDate() + savedEntryList.get(i).getCode());
+            savedRealmList.add(savedEntryList.get(i));
+        }
+        for(int i = 0; i < savedRealmList.size(); i++) {
+            Log.d("Saved realm", savedRealmList.get(i).getDate() + savedRealmList.get(i).getCode());
+        }
+        InputInfoEntry comparedEntry = new InputInfoEntry(txtComparedCode.getText().toString(), txtComparedDate.getText().toString());
+        History savedResult = new History(savedRealmList, result, Integer.parseInt(txtRunTimes.getText().toString()), comparedEntry);
+        RealmHelper.save(savedResult);
+        onSaveResultListener.onSave();
+    }
+
     @Override
     public void initView() {
         Collections.addAll(entryList, new InputInfoEntry(1), new InputInfoEntry(2), new InputInfoEntry(3), new InputInfoEntry(4), new InputInfoEntry(5));
@@ -231,7 +273,6 @@ public class ResultFragment extends BaseFragment implements ResultsView {
         rvInfoEntry.setLayoutManager(new LinearLayoutManager(getContext()));
         addTextChangedListener();
         updateInfoStatus();
-//        exportDatabase(getActivity());
     }
 
     private void addTextChangedListener() {
@@ -253,6 +294,15 @@ public class ResultFragment extends BaseFragment implements ResultsView {
                     if(NumberUtils.getDigitFromFullNumber(editable.toString(), txtComparedNumber.getText().toString()) != null) {
                         int position = Integer.parseInt(NumberUtils.getDigitFromFullNumber(editable.toString(), txtComparedNumber.getText().toString()));
                         String digit = String.valueOf(txtComparedNumber.getText().toString().charAt(position));
+                        txtComparedDigit.setText(digit);
+                        if(!txtComparedNumber.getText().toString().isEmpty()) {
+                            imgArrow.setVisibility(View.VISIBLE);
+                        }
+                        else
+                            imgArrow.setVisibility(View.GONE);
+                    }
+                    else if (editable.toString().startsWith("T") && editable.toString().length() == 2 && !txtComparedNumber.getText().toString().isEmpty()) { //case T1 + T2
+                        String digit = txtComparedNumber.getText().toString().substring(txtComparedNumber.getText().toString().length() - 1);
                         txtComparedDigit.setText(digit);
                         if(!txtComparedNumber.getText().toString().isEmpty()) {
                             imgArrow.setVisibility(View.VISIBLE);
@@ -293,6 +343,15 @@ public class ResultFragment extends BaseFragment implements ResultsView {
                         else
                             imgArrow.setVisibility(View.GONE);
                     }
+                    else if (txtComparedCode.getText().toString().startsWith("T") && txtComparedCode.getText().toString().length() == 2 && !txtComparedNumber.getText().toString().isEmpty()) { //case T1 + T2
+                        String digit = txtComparedNumber.getText().toString().substring(txtComparedNumber.getText().toString().length() - 1);
+                        txtComparedDigit.setText(digit);
+                        if(!txtComparedNumber.getText().toString().isEmpty()) {
+                            imgArrow.setVisibility(View.VISIBLE);
+                        }
+                        else
+                            imgArrow.setVisibility(View.GONE);
+                    }
                     else {
                         imgArrow.setVisibility(View.GONE);
                         txtComparedDigit.setText("");
@@ -300,9 +359,9 @@ public class ResultFragment extends BaseFragment implements ResultsView {
                 }
                 List<LotteryResult> lotteryResultList = RealmHelper.findAll(LotteryResult.class, "date");
                 txtMaxRunnableTime.setText(String.valueOf(NumberUtils.getMaximumRunnableTimes(editable.toString(),
-                        DateUtils.formatReceivedDateToSentDate(lotteryResultList.get(0).getDate())) - 2));
+                        DateUtils.formatReceivedDateToSentDate(lotteryResultList.get(0).getDate()))));
                 txtRunTimes.setText(String.valueOf(NumberUtils.getMaximumRunnableTimes(editable.toString(),
-                        DateUtils.formatReceivedDateToSentDate(lotteryResultList.get(0).getDate())) - 2));
+                        DateUtils.formatReceivedDateToSentDate(lotteryResultList.get(0).getDate()))));
                 txtComparedCode.requestFocus();
             }
         });
@@ -321,8 +380,10 @@ public class ResultFragment extends BaseFragment implements ResultsView {
 
     @Override
     public void getCalculationResult(int result) {
+        this.result = result;
         txtResults.setText("Số lần trùng: " + result);
         txtResultsInPercentage.setText( "Phần trăm: " + result + "/" + txtRunTimes.getText().toString() + " = " + (result * 100 / Integer.parseInt(txtRunTimes.getText().toString())) + "%");
+        btnSaveResult.setVisibility(View.VISIBLE);
     }
 
     public void updateInfoStatus() {

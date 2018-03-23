@@ -56,4 +56,5 @@ public class App extends AppCommon {
     public void setCurrentActivity(BaseActivity currentActivity) {
         this.currentActivity = currentActivity;
     }
+
 }

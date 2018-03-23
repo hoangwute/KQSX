@@ -1,5 +1,7 @@
 package com.wuochoang.kqsx.utility;
 
+import android.util.Log;
+
 import com.wuochoang.kqsx.common.Constant;
 
 import java.text.DateFormat;
@@ -56,6 +58,8 @@ public class DateUtils {
     }
 
     public static boolean isExceedThreshold(String lastSavedDateString, String endRunningDateString) {
+        Log.d("date string last", lastSavedDateString);
+        Log.d("date string end", endRunningDateString);
         boolean exceededThreshold = false;
         DateFormat parser = new SimpleDateFormat(Constant.SENT_DATE_FORMAT);
         Date lastSaveDate = null;

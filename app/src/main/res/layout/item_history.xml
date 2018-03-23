@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    card_view:cardCornerRadius="4dp"
+    android:elevation="5dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvHistoryEntry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </android.support.v7.widget.RecyclerView>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/btnDeleteHistory"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_delete_alternative"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/compareNumberLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="So sánh với: " />
+
+            <EditText
+                android:id="@+id/txtComparedHistoryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:focusable="false"
+                android:hint="Ngày"/>
+
+            <EditText
+                android:id="@+id/txtComparedHistoryCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:inputType="textCapCharacters"
+                android:maxLength="4"
+                android:hint="Vị trí"
+                android:focusable="false"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/runTimesLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/txtHistoryRuntimesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lần chaỵ: "/>
+
+            <TextView
+                android:id="@+id/txtHistoryRuntimes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/red" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/resultLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/txtHistoryResultsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@+id/txtHistoryRuntimes"
+                app:layout_constraintTop_toBottomOf="@+id/txtHistoryRuntimes"
+                android:layout_marginBottom="10dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:text="Kết Quả: "/>
+
+            <TextView
+                android:id="@+id/txtHistoryResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@+id/txtHistoryRuntimes"
+                app:layout_constraintTop_toBottomOf="@+id/txtHistoryRuntimes"
+                android:layout_marginBottom="10dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/green"
+                android:text="10" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/txtHistoryResultsPercentageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tỉ lệ: "/>
+
+            <TextView
+                android:id="@+id/txtHistoryResultsPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green"
+                android:text="10/20 = 0.5%"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+

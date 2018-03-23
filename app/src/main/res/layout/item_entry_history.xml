@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/inputInfoEntryLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtEntryId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1: "
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/txtDayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày: " />
+
+        <EditText
+            android:id="@+id/txtEntryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:focusable="false"
+            android:hint="Chọn ngày"/>
+
+        <TextView
+            android:id="@+id/txtCodeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Vị trí: " />
+
+        <EditText
+            android:id="@+id/txtEntryCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:inputType="textCapCharacters"
+            android:gravity="center"
+            android:maxLength="4"
+            android:focusable="false"
+            android:hint="Chọn vị trí"/>
+
+        <TextView
+            android:id="@+id/txtEntryNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

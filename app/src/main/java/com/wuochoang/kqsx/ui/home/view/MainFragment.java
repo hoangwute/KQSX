@@ -53,7 +53,6 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
     @Override
     public void initView() {
-//        replaceFragment(new ResultFragment());
         pager.setAdapter(mAdapter = new MainVPAdapter(getChildFragmentManager(), getContext()));
         pager.setSwipeLocked(true);
         pager.setOffscreenPageLimit(1);
@@ -68,17 +67,8 @@ public class MainFragment extends BaseFragment implements ViewPager.OnPageChange
 
     }
 
-//    public void replaceFragment(BaseFragment fragment) {
-//        if (fragment != null) {
-//            getActivity().getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.containerr, fragment)
-//                    .commit();
-//        }
-//    }
-
     public void setCurrentItem(int position) {
-        pager.setCurrentItem(position, false);
+        pager.setCurrentItem(position, true);
     }
 
 

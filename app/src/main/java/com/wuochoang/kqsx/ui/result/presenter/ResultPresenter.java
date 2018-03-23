@@ -57,7 +57,7 @@ public class ResultPresenter extends BasePresenter<ResultsView> {
 
                     @Override
                     public void onError(Throwable e) {
-                        ToastUtils.show(e.getMessage());
+                        ToastUtils.show("Xảy ra lỗi trong quá trình lấy dữ liệu");
                         hideLoading();
                     }
 
@@ -92,8 +92,14 @@ public class ResultPresenter extends BasePresenter<ResultsView> {
                 String totalDigitSumString = String.valueOf(totalDigitSum);
                 String fullNumber = convertCodeToNumber(DateUtils.getNextDate(comparedDate, i), comparedCode);
                 if(!fullNumber.isEmpty()) {
-                    int position = Integer.parseInt(NumberUtils.getDigitFromFullNumber(comparedCode, fullNumber));
-                    String comparedDigit = String.valueOf(fullNumber.charAt(position));
+                    String comparedDigit = "";
+                    if(comparedCode.startsWith("T") && comparedCode.length() == 2) {
+                        comparedDigit = fullNumber.substring(fullNumber.length() - 1);
+                    }
+                    else {
+                        int position = Integer.parseInt(NumberUtils.getDigitFromFullNumber(comparedCode, fullNumber));
+                        comparedDigit = String.valueOf(fullNumber.charAt(position));
+                    }
                     Log.d("Result", totalDigitSumString.substring(totalDigitSumString.length() - 1) + " and " + comparedDigit);
                     if (Integer.parseInt(totalDigitSumString.substring(totalDigitSumString.length() - 1)) == Integer.parseInt(comparedDigit)) {
                         counter++;

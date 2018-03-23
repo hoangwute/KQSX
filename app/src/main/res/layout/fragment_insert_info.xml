@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/svPlaceDetail"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:isScrollContainer="false">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtDayLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhập / Sửa dữ liệu cho ngày"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:id="@+id/txtDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDayLabel"
+            android:focusable="false"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:hint="Chọn ngày"/>
+
+        <TextView
+            android:id="@+id/txtDBLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đặc Biệt"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@+id/txtDB"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDB"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <EditText
+            android:id="@+id/txtDB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:maxLength="5"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@+id/txtDay"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/txtDBLabel"/>
+
+        <TextView
+            android:id="@+id/txtGNLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Nhất"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gnLl"
+            app:layout_constraintBottom_toBottomOf="@+id/gnLl"/>
+
+        <LinearLayout
+            android:id="@+id/gnLl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtDB"
+            app:layout_constraintLeft_toLeftOf="@+id/txtDB"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/txtGN1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="5" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtG2Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Nhì"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g2Ll"
+            app:layout_constraintBottom_toBottomOf="@+id/g2Ll"/>
+
+        <LinearLayout
+            android:id="@+id/g2Ll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/gnLl"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/txtG21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtG3Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Ba"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g3Ll1"
+            app:layout_constraintBottom_toBottomOf="@+id/g3Ll2"/>
+
+        <LinearLayout
+            android:id="@+id/g3Ll1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/g2Ll"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/txtG31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/g3Ll2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/g3Ll1"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/txtG34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="5"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtG4Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Tư"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g4Ll"
+            app:layout_constraintBottom_toBottomOf="@+id/g4Ll"/>
+
+        <LinearLayout
+            android:id="@+id/g4Ll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/g3Ll2"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="4">
+
+            <EditText
+                android:id="@+id/txtG41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtG5Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Năm"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g5Ll1"
+            app:layout_constraintBottom_toBottomOf="@+id/g5Ll2"/>
+
+        <LinearLayout
+            android:id="@+id/g5Ll1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/g4Ll"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/txtG51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG53"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/g5Ll2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/g5Ll1"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/txtG54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="4"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtG6Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Sáu"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g6Ll"
+            app:layout_constraintBottom_toBottomOf="@+id/g6Ll"/>
+
+        <LinearLayout
+            android:id="@+id/g6Ll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/g5Ll2"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/txtG61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="3"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG62"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="3"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG63"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="3"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtG7Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giải Bảy"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/g7Ll"
+            app:layout_constraintBottom_toBottomOf="@+id/g7Ll"/>
+
+        <LinearLayout
+            android:id="@+id/g7Ll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/g6Ll"
+            app:layout_constraintLeft_toLeftOf="@+id/gnLl"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center"
+            android:weightSum="4">
+
+            <EditText
+                android:id="@+id/txtG71"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="2"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG72"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="2"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG73"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="2"
+                android:inputType="number"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/txtG74"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLength="2"
+                android:inputType="number"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnInsertInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cập Nhật Dữ Liệu"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/shape_orange_shawdow_dark_orange"
+            app:layout_constraintTop_toBottomOf="@+id/g7Ll"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

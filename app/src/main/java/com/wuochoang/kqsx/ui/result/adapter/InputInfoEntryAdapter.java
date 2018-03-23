@@ -115,6 +115,8 @@ public class InputInfoEntryAdapter extends RecyclerView.Adapter<InputInfoEntryAd
 
         public void bind(InputInfoEntry entry) {
             txtEntryId.setText(String.valueOf(entry.getId()));
+            txtEntryCode.setText(entry.getCode());
+            txtEntryDate.setText(entry.getDate());
             txtEntryCode.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

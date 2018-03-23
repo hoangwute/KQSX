@@ -3,13 +3,22 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/orange_submit</item>
-        <item name="colorPrimaryDark">@color/orange_submit</item>
-        <item name="colorAccent">@color/orange_submit</item>
+        <item name="colorPrimary">@color/orange_light</item>
+        <item name="colorPrimaryDark">@color/orange_light</item>
+        <item name="colorAccent">@color/orange_light</item>
         <!--<item name="android:fontFamily">@font/roboto</item>-->
         <!--<item name="fontFamily">@font/roboto</item>-->
         <!-- enable window content transitions -->
     </style><!-- Base application theme. -->
+
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
+    </style>
+
+    <!-- for text -->
+    <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 
     <style name="RatingBar" parent="Base.Widget.AppCompat.RatingBar.Small">

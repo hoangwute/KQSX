@@ -1,10 +1,12 @@
 package com.wuochoang.kqsx.model;
 
+import io.realm.RealmObject;
+
 /**
  * Created by admin on 08-Mar-18.
  */
 
-public class InputInfoEntry {
+public class InputInfoEntry extends RealmObject {
     private int id;
     private String code;
     private String digit;
@@ -16,6 +18,11 @@ public class InputInfoEntry {
 
     public InputInfoEntry() {
 
+    }
+
+    public InputInfoEntry(String code, String date) {
+        this.code = code;
+        this.date = date;
     }
 
     public int getId() {

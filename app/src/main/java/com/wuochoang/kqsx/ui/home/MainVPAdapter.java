@@ -16,8 +16,11 @@ import com.wuochoang.kqsx.ui.home.tabs.Tab5Fragment;
  */
 
 public class MainVPAdapter extends FragmentStatePagerAdapter {
+
     private Tab1Fragment tab1Fragment;
     private Tab2Fragment tab2Fragment;
+    private Tab3Fragment tab3Fragment;
+    private Tab4Fragment tab4Fragment;
 
     private Context mContext;
 
@@ -39,6 +42,16 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
                     tab2Fragment = new Tab2Fragment();
                 }
                 return tab2Fragment;
+            case 2:
+                if (tab3Fragment == null) {
+                    tab3Fragment = new Tab3Fragment();
+                }
+                return tab3Fragment;
+            case 3:
+                if (tab4Fragment == null) {
+                    tab4Fragment = new Tab4Fragment();
+                }
+                return tab4Fragment;
             default:
                 return null;
         }
@@ -46,7 +59,7 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     // This determines the title for each tab
@@ -58,6 +71,10 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
                 return "Kết Quả";
             case 1:
                 return "Lịch Sử";
+            case 2:
+                return "Nhập liệu";
+            case 3:
+                return "Test";
             default:
                 return null;
         }

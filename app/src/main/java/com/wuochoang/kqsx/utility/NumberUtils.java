@@ -29,10 +29,10 @@ public class NumberUtils {
                 query -> query.equalTo("date", formattedDate));
         if(code.startsWith("DB") || code.startsWith("G11")) {
             if(result != null) {
-                fullNumber = result .getG0();
+                fullNumber = result.getG0();
             }
         }
-        if(code.startsWith("G2") || code.startsWith("G3") || code.startsWith("G4") || code.startsWith("G5") || code.startsWith("G6") || code.startsWith("G7")) {
+        if(code.startsWith("G2") || code.startsWith("G3") || code.startsWith("G4") || code.startsWith("G5") || code.startsWith("G6") || code.startsWith("G7") || code.startsWith("T1") || code.startsWith("T2")) {
             String fullNumberList = "";
             switch (code.substring(0,2)) {
                 case "G2":
@@ -58,6 +58,14 @@ public class NumberUtils {
                 case "G7":
                     if(result != null)
                         fullNumberList = result.getG7();
+                    break;
+                case "T1":
+                    if(result != null)
+                        fullNumber = String.valueOf(Integer.parseInt(result.getG0().substring(0, 1)) + Integer.parseInt(result.getG0().substring(1, 2)));
+                    break;
+                case "T2":
+                    if(result != null)
+                        fullNumber = String.valueOf(Integer.parseInt(result.getG0().substring(3, 4)) + Integer.parseInt(result.getG0().substring(4, 5)));
                     break;
             }
 
@@ -86,7 +94,8 @@ public class NumberUtils {
                     if (String.valueOf(code.charAt(2)).equals(String.valueOf(i + 1))) {
                         digit = String.valueOf(i);
                     }
-                } else if (code.length() == 4 && String.valueOf(code.charAt(3)).equals(String.valueOf(i + 1))) {
+                }
+                else if (code.length() == 4 && String.valueOf(code.charAt(3)).equals(String.valueOf(i + 1))) {
                     digit = String.valueOf(i);
                 }
             }
@@ -97,6 +106,8 @@ public class NumberUtils {
     public static int getMaximumRunnableTimes(String comparedDateString, String lastFetchedDateString) {
         Date comparedDate = DateUtils.convertStringToDate(comparedDateString);
         Date lastFetchedDate = DateUtils.convertStringToDate(lastFetchedDateString);
+        if(comparedDate == null) return 0;
+        if(lastFetchedDate == null) return 0;
         DateTime comparedDateTime = new DateTime(comparedDate.getTime());
         DateTime lastFetchedDateTime = new DateTime(lastFetchedDate.getTime());
         Days d = Days.daysBetween(comparedDateTime, lastFetchedDateTime);
