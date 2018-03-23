@@ -380,6 +380,7 @@ public class ResultFragment extends BaseFragment implements ResultsView {
 
     @Override
     public void getCalculationResult(int result) {
+        ToastUtils.show("hoang dev branch");
         this.result = result;
         txtResults.setText("Số lần trùng: " + result);
         txtResultsInPercentage.setText( "Phần trăm: " + result + "/" + txtRunTimes.getText().toString() + " = " + (result * 100 / Integer.parseInt(txtRunTimes.getText().toString())) + "%");
