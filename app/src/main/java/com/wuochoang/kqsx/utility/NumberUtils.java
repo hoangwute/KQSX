@@ -3,6 +3,7 @@ package com.wuochoang.kqsx.utility;
 import android.util.Log;
 
 import com.olddog.common.ToastUtils;
+import com.wuochoang.kqsx.common.Constant;
 import com.wuochoang.kqsx.common.utils.Utils;
 import com.wuochoang.kqsx.manager.database.RealmHelper;
 import com.wuochoang.kqsx.model.InputInfoEntry;
@@ -11,7 +12,11 @@ import com.wuochoang.kqsx.model.LotteryResult;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -27,11 +32,15 @@ public class NumberUtils {
         String fullNumber = "";
         LotteryResult result = RealmHelper.findFirst(LotteryResult.class,
                 query -> query.equalTo("date", formattedDate));
-        if(code.startsWith("DB") || code.startsWith("G11")) {
+        if(code.startsWith("DB")) {
             if(result != null) {
                 fullNumber = result.getG0();
             }
         }
+        if(code.startsWith("G11"))
+            if(result != null) {
+                fullNumber = result.getG1();
+            }
         if(code.startsWith("G2") || code.startsWith("G3") || code.startsWith("G4") || code.startsWith("G5") || code.startsWith("G6") || code.startsWith("G7") || code.startsWith("T1") || code.startsWith("T2")) {
             String fullNumberList = "";
             switch (code.substring(0,2)) {
@@ -115,5 +124,20 @@ public class NumberUtils {
         long diff = lastFetchedDate.getTime() - comparedDate.getTime();
         return days;
     }
+    public static String getNextDate(String previousDateString, int nextDayNumber) {
+        DateFormat parser = new SimpleDateFormat(Constant.SENT_DATE_FORMAT);
+        Date previousDate = null;
+        try {
+            previousDate = parser.parse(previousDateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(previousDate);
+        calendar.add(Calendar.DAY_OF_YEAR, nextDayNumber);
+        SimpleDateFormat sdf = new SimpleDateFormat(Constant.SENT_DATE_FORMAT);
+        return sdf.format(calendar.getTime());
+    }
+
 
 }

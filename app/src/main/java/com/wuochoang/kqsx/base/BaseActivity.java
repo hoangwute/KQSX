@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.wuochoang.kqsx.App;
 
 import com.wuochoang.kqsx.R;
@@ -14,12 +15,16 @@ import com.wuochoang.kqsx.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public abstract BaseFragment initFragment();
+    private FirebaseAnalytics mFirebaseAnalytics;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         replaceFragment(initFragment());
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
     }
 
     private void replaceFragment(BaseFragment fragment) {
@@ -36,4 +41,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onResume();
         App.get().setCurrentActivity(this);
     }
+
+    public FirebaseAnalytics getmFirebaseAnalytics() {
+        return mFirebaseAnalytics;
+    }
+
 }

@@ -74,7 +74,6 @@ public class HistoryFragment extends BaseFragment implements ResultFragment.OnSa
 
     @Override
     public void onSave() {
-        ToastUtils.show("Got it");
         historyList = RealmHelper.findAll(History.class);
         historyAdapter.updateResult(historyList);
     }

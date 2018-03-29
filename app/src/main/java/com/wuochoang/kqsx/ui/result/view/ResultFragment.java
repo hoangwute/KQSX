@@ -1,6 +1,7 @@
 package com.wuochoang.kqsx.ui.result.view;
 
 import android.app.DatePickerDialog;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -13,8 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.olddog.common.KeyboardUtils;
 import com.olddog.common.ToastUtils;
+import com.wuochoang.kqsx.App;
 import com.wuochoang.kqsx.R;
 import com.wuochoang.kqsx.base.BaseFragment;
 import com.wuochoang.kqsx.base.BasePresenter;
@@ -207,6 +210,10 @@ public class ResultFragment extends BaseFragment implements ResultsView {
         }
         else
             presenter.getListLottoResult(Constant.PROVINCE_HANOI, String.format("%s - %s", txtInfoFrom.getText().toString(), txtInfoTo.getText().toString()));
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "test1");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "lay ket qua");
+        mActivity.getmFirebaseAnalytics().logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
     @OnClick(R.id.txtInfoFrom)

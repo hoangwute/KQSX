@@ -7,13 +7,14 @@ repositories {
 
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
+apply plugin: 'com.google.gms.google-services'
 
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "com.wuochoang.basecode"
+        applicationId "com.wuochoang.kqsx"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
@@ -40,10 +41,12 @@ android {
 }
 ext.VERSION_BUTTER_KNIFE = "8.7.0"
 ext.VERSION_DAGGER = "2.9"
+ext.VERSION_SUPPORT = "26.1.0"
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.0.1'
-    compile 'com.android.support:design:26.0.1'
+    compile "com.android.support:appcompat-v7:$VERSION_SUPPORT"
+    compile "com.android.support:design:$VERSION_SUPPORT"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'net.danlew:android.joda:2.9.9.2'
     testCompile 'junit:junit:4.12'
@@ -58,7 +61,7 @@ dependencies {
     compile "com.google.dagger:dagger:$VERSION_DAGGER"
     annotationProcessor "com.google.dagger:dagger-compiler:$VERSION_DAGGER"
     provided 'javax.annotation:jsr250-api:1.0'
-    compile 'com.android.support:cardview-v7:23.3.+'
-
-
+    compile "com.android.support:cardview-v7:$VERSION_SUPPORT"
+    compile 'com.google.firebase:firebase-core:12.0.0'
 }
+
