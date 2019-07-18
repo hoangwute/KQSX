@@ -126,6 +126,24 @@ public class RealmHelper {
         }
     }
 
+    public static <T extends RealmObject> List<T> findAll(Class<T> clazz, String sort, int sortType, int limit, OnQuerySearch<T> querySearch){
+        Realm realm = Realm.getDefaultInstance();
+        try {
+            RealmQuery<T> query = realm.where(clazz);
+            if(querySearch != null)
+                query = querySearch.onQuery(query);
+            List<T> listData = TextUtils.isEmpty(sort) ? query.findAll() : query.findAllSorted(sort, sortType == -1 ? Sort.DESCENDING : Sort.ASCENDING);
+            List<T> listResult = new ArrayList<>();
+            if(listData != null && listData.size() > 0) {
+                listResult = realm.copyFromRealm(listData);
+            }
+            if(limit > 0 && limit < listResult.size()) return listResult.subList(0, limit);
+            return listResult;
+        }finally {
+            realm.close();
+        }
+    }
+
     public interface  OnQuerySearch<E extends RealmObject>{
         RealmQuery<E> onQuery(RealmQuery<E> query);
     }

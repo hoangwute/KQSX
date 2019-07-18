@@ -59,7 +59,7 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     // This determines the title for each tab
@@ -74,7 +74,7 @@ public class MainVPAdapter extends FragmentStatePagerAdapter {
             case 2:
                 return "Nhập liệu";
             case 3:
-                return "Test";
+                return "Xuất Excel";
             default:
                 return null;
         }

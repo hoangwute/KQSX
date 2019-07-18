@@ -5,16 +5,19 @@ import com.wuochoang.kqsx.base.BasePresenter;
 
 import butterknife.OnClick;
 import com.wuochoang.kqsx.R;
+import com.wuochoang.kqsx.network.ApiService;
 import com.wuochoang.kqsx.ui.result.view.ResultFragment;
+
+import javax.inject.Inject;
 
 /**
  * Created by quyenlx on 8/9/2017.
  */
 
 public class DevicesFragment extends BaseFragment {
+
     @Override
     public void injectDependence() {
-
     }
 
     @Override

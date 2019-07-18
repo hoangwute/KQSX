@@ -210,10 +210,6 @@ public class ResultFragment extends BaseFragment implements ResultsView {
         }
         else
             presenter.getListLottoResult(Constant.PROVINCE_HANOI, String.format("%s - %s", txtInfoFrom.getText().toString(), txtInfoTo.getText().toString()));
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "test1");
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "lay ket qua");
-        mActivity.getmFirebaseAnalytics().logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
     @OnClick(R.id.txtInfoFrom)
